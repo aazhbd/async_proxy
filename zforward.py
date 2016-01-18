@@ -28,10 +28,10 @@ class ZProxy:
     def forward(self):
         from_client = self.in_c.recv(1024)
         self.cs.send(from_client)
-        print "received from client and sent to server : " + str(from_client)
+        print "received from client and sent to server : " + str(from_client) + " Size : " + str(len(from_client))
         from_server = self.cs.recv(1024)
         self.in_c.send(from_server)
-        print "received from server and sent to client : " + str(from_server)
+        print "received from server and sent to client : " + str(from_server) + " Size : " + str(len(from_server))
         
         while True:
             if not from_client or not from_server:
